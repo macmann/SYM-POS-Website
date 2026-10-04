@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
-import { ArrowUpRight } from "lucide-react";
+import { Github, Star } from "lucide-react";
 import { site } from "@/content/site";
 const groups = {
   Product: [
@@ -22,9 +22,9 @@ const groups = {
     ["GitHub", site.github],
   ],
   Company: [
-    ["Contact Sales", "/contact"],
+    ["Contact Us", "/contact"],
     ["Request Demo", "/demo"],
-    ["Pricing", "/pricing"],
+    ["Custom Support", "/contact?intent=support"],
     ["Privacy", "/privacy"],
     ["Terms", "/terms"],
   ],
@@ -45,6 +45,9 @@ export function Footer() {
             <br />
             Connected on your terms.
           </p>
+          <a className="footer-star" href={site.github}>
+            <Github size={16} /> Star SYM POS on GitHub <Star size={14} />
+          </a>
           <span className="footer-local">
             <span className="status-dot" />
             Local-first. Restaurant-ready.
@@ -56,7 +59,7 @@ export function Footer() {
             {links.map(([label, href]) => (
               <Link href={href} key={label}>
                 {label}
-                {label === "GitHub" && <ArrowUpRight size={13} />}
+                {label === "GitHub" && <Github size={14} />}
               </Link>
             ))}
           </div>

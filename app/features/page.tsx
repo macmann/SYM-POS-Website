@@ -1,5 +1,9 @@
 import { PageHero } from "@/components/detail-page";
 import { features } from "@/content/features";
+import { CommunitySection, SupportSection } from "@/components/community";
+import { Check } from "lucide-react";
+import { ScreenshotGallery } from "@/components/screenshot-gallery";
+import { featureDetails } from "@/content/screenshots";
 import { solutions } from "@/content/solutions";
 import {
   SectionHeading,
@@ -26,11 +30,22 @@ export default function Page() {
       <section className="section">
         {features.map((f) => (
           <article id={f.id} className="detail-block" key={f.id}>
-            <SectionHeading
-              eyebrow={f.label}
-              title={f.title}
-              description={f.description}
-            />
+            <div className="section-copy">
+              <SectionHeading
+                eyebrow={f.label}
+                title={f.title}
+                description={f.description}
+              />
+              <p>{featureDetails[f.id].text}</p>
+              <ul className="check-list">
+                {featureDetails[f.id].bullets.map((b) => (
+                  <li key={b}>
+                    <Check />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <ProductScreenshot
               src={`/product/${f.screen}.webp`}
               alt={`Actual ${f.label} product screen`}
@@ -58,6 +73,39 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <ScreenshotGallery
+        eyebrow="THE PEOPLE AND CONFIGURATION BEHIND SERVICE"
+        title="Give the team a workspace that fits their role"
+        description="Restaurant operation also depends on the floor layout, account permissions and the labels staff read each day. Explore these actual administration screens alongside the operational features."
+        items={[
+          {
+            screen: "table-layout",
+            title: "Manage the restaurant floor",
+            description:
+              "Maintain the table concepts used by front-of-house ordering and service.",
+          },
+          {
+            screen: "users",
+            title: "Named users and assigned roles",
+            description:
+              "Create individual staff accounts and control active access with implemented permissions.",
+          },
+          {
+            screen: "localization",
+            title: "English and Myanmar configuration",
+            description:
+              "Review branch language and editable label mappings; test receipt glyphs on your selected printer.",
+          },
+          {
+            screen: "cloud-sync",
+            title: "Optional cloud menu connection",
+            description:
+              "Review synchronization settings and diagnostics. This evaluation screenshot shows an unconnected setup, not an active production link.",
+          },
+        ]}
+      />
+      <CommunitySection />
+      <SupportSection />
       <CTASection />
     </>
   );

@@ -48,9 +48,9 @@ test("mobile navigation opens, closes and supports Escape", async ({
   await toggle.click();
   await page
     .getByRole("navigation", { name: "Main navigation" })
-    .getByRole("link", { name: "Pricing", exact: true })
+    .getByRole("link", { name: "Hardware", exact: true })
     .click();
-  await expect(page).toHaveURL(/pricing/);
+  await expect(page).toHaveURL(/hardware/);
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 test("keyboard product dropdown", async ({ page }) => {
@@ -109,15 +109,10 @@ test("contact validation and honest delivery fallback", async ({
   expect(cross.status()).toBe(403);
 });
 test("no horizontal overflow at target widths", async ({ page }) => {
+  test.setTimeout(120000);
   for (const width of [320, 375, 430, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of [
-      "/",
-      "/offline-first",
-      "/hardware",
-      "/solutions/multi-location",
-      "/contact",
-    ]) {
+    for (const route of routes) {
       await page.goto(route);
       expect(
         await page.evaluate(
@@ -150,7 +145,8 @@ test("no broken internal links, console or hydration errors", async ({
 });
 test("accessibility scan and Myanmar font rendering", async ({ page }) => {
   const { default: AxeBuilder } = await import("@axe-core/playwright");
-  for (const route of ["/", "/contact", "/offline-first", "/pricing"]) {
+  test.setTimeout(90000);
+  for (const route of routes) {
     await page.goto(route);
     const result = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -167,7 +163,7 @@ test("accessibility scan and Myanmar font rendering", async ({ page }) => {
   await page.evaluate(async () => {
     await document.fonts.ready;
     for (const img of Array.from(document.images)) img.loading = "eager";
-    await Promise.all(Array.from(document.images).map(img => img.decode()));
+    await Promise.all(Array.from(document.images).map((img) => img.decode()));
   });
   expect(
     await page.evaluate(() =>
@@ -254,4 +250,54 @@ test("configured demo resolves to real URL and invalid URLs fall back", async ()
     label: "Request a Demo",
   });
   expect(getDemoCTA("javascript:alert(1)").href).toBe("/contact?intent=demo");
+});
+
+test("open-source navigation and removed pricing", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: "Star on GitHub" }).first(),
+  ).toHaveAttribute("href", "https://github.com/macmann/RestaurantPOS");
+  await expect(
+    page.getByRole("link", { name: "Contact Us", exact: true }).first(),
+  ).toHaveAttribute("href", "/contact");
+  await expect(page.locator('a[href="/pricing"]')).toHaveCount(0);
+  expect((await request.get("/pricing")).status()).toBe(404);
+  const sitemap = await request.get("/sitemap.xml");
+  expect(await sitemap.text()).not.toContain("/pricing");
+  await page.goto("/contact");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Need help",
+  );
+});
+
+test("enriched pages have real screenshot galleries and source links", async ({
+  page,
+  request,
+}) => {
+  for (const route of [
+    "/kitchen-display",
+    "/inventory",
+    "/reports",
+    "/hardware",
+    "/security",
+    "/solutions/restaurants",
+    "/solutions/cafes",
+    "/solutions/multi-location",
+    "/demo",
+  ]) {
+    await page.goto(route);
+    expect(await page.locator(".product-shot").count()).toBeGreaterThanOrEqual(
+      3,
+    );
+    const sources = await page
+      .locator(".product-shot>a")
+      .evaluateAll((nodes) => nodes.map((n) => n.getAttribute("href")));
+    for (const src of new Set(sources)) {
+      const res = await request.get(src!);
+      expect(res.status(), src!).toBe(200);
+    }
+  }
 });

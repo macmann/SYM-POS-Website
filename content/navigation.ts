@@ -22,7 +22,7 @@ export const navigation = [
   },
   { label: "Offline-First", href: "/offline-first" },
   { label: "Hardware", href: "/hardware" },
-  { label: "Pricing", href: "/pricing" },
+
   {
     label: "Resources",
     links: [

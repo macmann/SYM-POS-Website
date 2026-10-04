@@ -2,7 +2,7 @@ import { safeUrl, siteUrl } from "@/lib/env";
 import { getDemoCTA } from "@/lib/demo";
 export const site = {
   name: "SYM POS",
-  tagline: "Restaurant operations that keep working locally.",
+  tagline: "Open-source restaurant operations that keep working locally.",
   url: siteUrl,
   github: safeUrl(
     process.env.NEXT_PUBLIC_GITHUB_URL,

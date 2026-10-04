@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import { navigation } from "@/content/navigation";
+import { GitHubLink } from "@/components/community";
 import { site } from "@/content/site";
 export function Header() {
   const pathname = usePathname();
@@ -108,6 +109,7 @@ export function Header() {
             ),
           )}
           <div className="header-actions">
+            <GitHubLink compact />
             <Link
               href="/demo"
               className="demo-link"
@@ -120,7 +122,7 @@ export function Header() {
               href="/contact"
               onClick={() => setOpen(false)}
             >
-              Contact Sales <ArrowUpRight size={14} />
+              Contact Us <ArrowUpRight size={14} />
             </Link>
           </div>
         </nav>

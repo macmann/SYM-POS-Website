@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | SYM POS",
   },
   description:
-    "Browser-based restaurant POS for ordering, tables, kitchen and bar, billing, inventory and reporting. Core workflows run on your restaurant LAN.",
+    "Open-source browser-based restaurant POS for ordering, tables, kitchen and bar, billing, inventory and reporting. Core workflows run on your restaurant LAN.",
   icons: { icon: "/brand/favicon.svg" },
   openGraph: {
     type: "website",
