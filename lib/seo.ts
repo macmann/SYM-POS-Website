@@ -6,14 +6,24 @@ export function metadata(
   path: string,
 ): Metadata {
   return {
+    metadataBase: new URL(site.url),
     title,
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: {
+        en: path,
+        my: path === "/" ? "/my" : `/my${path}`,
+        "x-default": path,
+      },
+    },
     openGraph: {
       title: `${title} | SYM POS`,
       description,
       url: site.url + path,
       type: "website",
+      locale: "en_US",
+      alternateLocale: ["my_MM"],
       images: ["/opengraph-image"],
     },
     twitter: {

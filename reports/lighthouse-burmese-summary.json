@@ -1,0 +1,18 @@
+{
+  "testedURL": "http://127.0.0.1:3000/my",
+  "fetchTime": "2026-10-04T07:02:53.641Z",
+  "lighthouseVersion": "13.5.0",
+  "mode": "Default Lighthouse mobile simulation against local production Next.js server; Burmese homepage",
+  "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "agentic-browsing": 100
+  },
+  "metrics": {
+    "largest-contentful-paint": "2.3\u00a0s",
+    "cumulative-layout-shift": "0.008",
+    "total-blocking-time": "50\u00a0ms"
+  }
+}

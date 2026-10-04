@@ -2062,3 +2062,43 @@ svg {
   color: #536447;
 }
 @media(min-width:768px) and (max-width:1099px){.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Myanmar Unicode copy needs extra line height and more room in navigation. */
+html[lang="my"] body { font-family: "Noto Sans Myanmar", "Inter Variable", "Myanmar Text", sans-serif; line-height: 1.95; }
+html[lang="my"] h1 { line-height: 1.55; font-size: clamp(2rem, 4.2vw, 3.8rem); letter-spacing: 0; }
+html[lang="my"] h2 { line-height: 1.65; font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: 0; }
+html[lang="my"] h3 { line-height: 1.8; letter-spacing: 0; }
+html[lang="my"] .eyebrow, html[lang="my"] .button { letter-spacing: 0; line-height: 1.9; }
+html[lang="my"] .nav-dropdown { min-width: 270px; }
+.language-switch { font-size: 12px; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; padding: 8px 4px; }
+html[lang="my"] .header-actions { gap: 12px; }
+html[lang="my"] .navigation { gap: 14px; }
+html[lang="my"] .header-inner { max-width: 1600px; padding-inline: 24px; }
+.my-home-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-bottom: 64px; }
+.my-home-hero h1 { font-size: clamp(2rem, 3.2vw, 3rem); }
+.my-hero-copy { min-width: 0; }
+.my-home-preview { min-width: 0; }
+.my-docs-grid { margin-top: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.my-screenshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
+.my-screenshot-grid h3 { margin-bottom: 16px; }
+html[lang="my"] .section-copy { min-width: 0; }
+html[lang="my"] .footer-main { grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr)); }
+html[lang="my"] .check-list li, html[lang="my"] .community-actions a { min-width: 0; }
+@media (min-width: 1100px) and (max-width: 1399px) {
+  html[lang="my"] .navigation { gap: 10px; font-size: 12px; }
+  html[lang="my"] .header-actions { gap: 8px; }
+  html[lang="my"] .header-actions .github-link { font-size: 11px; }
+  html[lang="my"] .brand { font-size: 22px; }
+}
+@media (max-width: 1099px) {
+  html[lang="my"] .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .my-home-hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .my-docs-grid, .my-screenshot-grid { grid-template-columns: minmax(0, 1fr); }
+  html[lang="my"] .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html[lang="my"] .header-inner { padding-inline: 19px; }
+  html[lang="my"] .product-shot figcaption { flex-wrap: wrap; gap: 8px; }
+  html[lang="my"] .hero-actions { align-items: stretch; }
+  html[lang="my"] .button { white-space: normal; }
+}
