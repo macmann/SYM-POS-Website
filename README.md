@@ -40,6 +40,16 @@ Tests assume no live demo URL or webhook is configured. Cover every route, metad
 
 `public/product/` contains 26 genuine screenshots from an isolated in-memory product evaluation, using synthetic starter data and sample orders and a paid sample bill. SCREENSHOTS.md records the screen sources and remaining optional improvements. Original neutral SVG fallback assets are retained but not displayed. Replace WebP files with refreshed approved captures at the same paths and preserve 1200×750 dimensions. Captions explicitly identify sample evaluation data. Product screenshots never include customer records, credentials or live infrastructure secrets. Brand assets reproduce the product’s plate-and-receipt mark in the marketing palette; see BRAND.md.
 
+## Burmese localization
+
+English pages keep their existing URLs. Every public page has a Burmese version under `/my` (for example `/my/features` and `/my/solutions/restaurants`). The header switch preserves the current page, query and section anchor; the footer links open each language’s homepage. Both languages render their HTML language, title, description, canonical and `hreflang` metadata on the server. The sitemap includes all 32 localized URLs. No language cookie, translation service or external font request is required.
+
+Burmese Unicode content lives in `content/burmese.ts`; navigation and contact messages live in `lib/locale.ts`. `components/burmese-page.tsx` renders the localized workflows, documentation links, screenshot galleries and open-source/support calls to action. Language-specific root layouts use the shared `components/site-layout.tsx`. English routes are in `app/(en)`; Burmese routes are in `app/(my)/my`. Burmese content pages are prerendered; both contact pages read delivery configuration at request time and use the same contact endpoint. Add new pages to both the English route inventory and Burmese content, and provide matching section anchors for translated navigation links.
+
+Product screenshots preserve their actual captured interface text; captions and alternative text are localized. Linked product documentation remains in its repository’s original language. Noto Sans Myanmar is self-hosted and Burmese typography uses extra line height. Legal pages remain review templates in both languages.
+
+Localization tests cover every Burmese route and screenshot asset, metadata, language switching in both directions, mobile menu/FAQ behavior, font loading, translated field validation and delivery feedback, all-page accessibility scans and widths from 320 to 1920px.
+
 ## Environment variables
 
 | Variable | Purpose |

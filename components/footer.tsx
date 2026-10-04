@@ -1,3 +1,4 @@
+import { localizedHref, translateLabel, type Locale } from "@/lib/locale";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { Github, Star } from "lucide-react";
@@ -29,36 +30,47 @@ const groups = {
     ["Terms", "/terms"],
   ],
 };
-export function Footer() {
+export function Footer({ locale = "en" }: { locale?: Locale }) {
+  const t = (text: string) => translateLabel(text, locale);
   return (
     <footer className="footer">
       <div className="footer-main">
         <div>
-          <Link className="brand" href="/">
+          <Link className="brand" href={localizedHref("/", locale)}>
             <span className="brand-mark">
               <BrandMark />
             </span>
             SYM <span className="brand-light">POS</span>
           </Link>
           <p>
-            Built around your restaurant.
+            {locale === "my"
+              ? "သင့်စားသောက်ဆိုင်အတွက် တည်ဆောက်ထားသည်။"
+              : "Built around your restaurant."}
             <br />
-            Connected on your terms.
+            {locale === "my"
+              ? "သင့်လိုအပ်ချက်အတိုင်း ချိတ်ဆက်ပါ။"
+              : "Connected on your terms."}
           </p>
           <a className="footer-star" href={site.github}>
-            <Github size={16} /> Star SYM POS on GitHub <Star size={14} />
+            <Github size={16} />{" "}
+            {locale === "my"
+              ? "GitHub တွင် SYM POS ကို Star ပေးပါ"
+              : "Star SYM POS on GitHub"}{" "}
+            <Star size={14} />
           </a>
           <span className="footer-local">
             <span className="status-dot" />
-            Local-first. Restaurant-ready.
+            {locale === "my"
+              ? "ဒေသတွင်းကွန်ရက်ကို အခြေခံသော စားသောက်ဆိုင်စနစ်။"
+              : "Local-first. Restaurant-ready."}
           </span>
         </div>
         {Object.entries(groups).map(([title, links]) => (
           <div key={title}>
-            <h3>{title}</h3>
+            <h3>{t(title)}</h3>
             {links.map(([label, href]) => (
-              <Link href={href} key={label}>
-                {label}
+              <Link href={localizedHref(href, locale)} key={t(label)}>
+                {t(label)}
                 {label === "GitHub" && <Github size={14} />}
               </Link>
             ))}
@@ -69,9 +81,19 @@ export function Footer() {
         <span>
           © {new Date().getFullYear()} {site.company}.
         </span>
-        <span>Restaurant operations, working together.</span>
         <span>
-          English <span lang="my">/ မြန်မာ</span>
+          {locale === "my"
+            ? "စားသောက်ဆိုင်လုပ်ငန်းများကို အတူတကွ ချိတ်ဆက်ပါ။"
+            : "Restaurant operations, working together."}
+        </span>
+        <span>
+          <Link href="/" lang="en" hrefLang="en">
+            English
+          </Link>{" "}
+          /{" "}
+          <Link href="/my" lang="my" hrefLang="my">
+            မြန်မာ
+          </Link>
         </span>
       </div>
     </footer>

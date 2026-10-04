@@ -5,9 +5,17 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import { navigation } from "@/content/navigation";
-import { GitHubLink } from "@/components/community";
+import { Github, Star } from "lucide-react";
+import {
+  englishPath,
+  localizedHref,
+  translateLabel,
+  type Locale,
+} from "@/lib/locale";
 import { site } from "@/content/site";
-export function Header() {
+export function Header({ locale = "en" }: { locale?: Locale }) {
+  const t = (text: string) => translateLabel(text, locale);
+  const href = (path: string) => localizedHref(path, locale);
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -42,7 +50,13 @@ export function Header() {
   return (
     <header className="header" ref={ref}>
       <div className="header-inner">
-        <Link className="brand" href="/" aria-label="SYM POS home">
+        <Link
+          className="brand"
+          href={href("/")}
+          aria-label={
+            locale === "my" ? "SYM POS ပင်မစာမျက်နှာ" : "SYM POS home"
+          }
+        >
           <span className="brand-mark">
             <BrandMark />
           </span>
@@ -53,7 +67,15 @@ export function Header() {
         <button
           ref={toggle}
           className="menu-toggle"
-          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-label={
+            locale === "my"
+              ? open
+                ? "လမ်းညွှန်ပိတ်ရန်"
+                : "လမ်းညွှန်ဖွင့်ရန်"
+              : open
+                ? "Close navigation"
+                : "Open navigation"
+          }
           aria-expanded={open}
           aria-controls="main-navigation"
           onClick={() => setOpen(!open)}
@@ -63,12 +85,12 @@ export function Header() {
         <nav
           id="main-navigation"
           className={open ? "navigation open" : "navigation"}
-          aria-label="Main navigation"
+          aria-label={locale === "my" ? "ပင်မလမ်းညွှန်" : "Main navigation"}
         >
           {navigation.map((item) =>
             item.links ? (
               <details
-                key={item.label}
+                key={t(item.label)}
                 className="nav-menu"
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
@@ -78,51 +100,80 @@ export function Header() {
                 }}
               >
                 <summary>
-                  {item.label}
+                  {t(item.label)}
                   <ChevronDown size={13} />
                 </summary>
                 <div className="nav-dropdown">
                   {item.links.map(([label, href]) => (
                     <Link
-                      key={label}
-                      href={label === "GitHub" ? site.github : href}
+                      key={t(label)}
+                      href={
+                        label === "GitHub"
+                          ? site.github
+                          : localizedHref(href, locale)
+                      }
                       onClick={(e) => {
                         setOpen(false);
                         const d = e.currentTarget.closest("details");
                         if (d) d.open = false;
                       }}
                     >
-                      {label}
+                      {t(label)}
                     </Link>
                   ))}
                 </div>
               </details>
             ) : (
               <Link
-                key={item.label}
-                href={item.href!}
-                aria-current={pathname === item.href ? "page" : undefined}
+                key={t(item.label)}
+                href={href(item.href!)}
+                aria-current={
+                  pathname === href(item.href!) ? "page" : undefined
+                }
                 onClick={() => setOpen(false)}
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             ),
           )}
           <div className="header-actions">
-            <GitHubLink compact />
+            <a
+              className="language-switch"
+              onClick={(e) => {
+                e.currentTarget.href +=
+                  window.location.search + window.location.hash;
+              }}
+              href={
+                locale === "en"
+                  ? localizedHref(pathname, "my")
+                  : englishPath(pathname)
+              }
+              hrefLang={locale === "en" ? "my" : "en"}
+              lang={locale === "en" ? "my" : "en"}
+              aria-label={
+                locale === "en" ? "Switch to Burmese" : "Switch to English"
+              }
+            >
+              {locale === "en" ? "မြန်မာ" : "English"}
+            </a>
+            <a className="github-link compact" href={site.github}>
+              <Github size={16} />
+              {t("Star on GitHub")}
+              <Star size={14} />
+            </a>
             <Link
-              href="/demo"
+              href={href("/demo")}
               className="demo-link"
               onClick={() => setOpen(false)}
             >
-              View Demo <ArrowUpRight size={14} />
+              {t("View Demo")} <ArrowUpRight size={14} />
             </Link>
             <Link
               className="button button-dark small"
-              href="/contact"
+              href={href("/contact")}
               onClick={() => setOpen(false)}
             >
-              Contact Us <ArrowUpRight size={14} />
+              {t("Contact Us")} <ArrowUpRight size={14} />
             </Link>
           </div>
         </nav>

@@ -22,20 +22,22 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
 };
-export default function RootLayout({
+export function SiteLayout({
   children,
+  locale = "en",
 }: {
   children: React.ReactNode;
+  locale?: "en" | "my";
 }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
         <a className="skip-link" href="#main">
-          Skip to content
+          {locale === "my" ? "အကြောင်းအရာသို့ သွားရန်" : "Skip to content"}
         </a>
-        <Header />
+        <Header locale={locale} />
         <main id="main">{children}</main>
-        <Footer />
+        <Footer locale={locale} />
         <Analytics />
       </body>
     </html>

@@ -47,10 +47,16 @@ Create a separate application from this repository. Dockerfile build pack; `/Doc
 
 ## 10. QA and launch status
 
-Lint, typecheck, production build and all 13 tests passed. Automated accessibility scans found no WCAG A/AA violations across all 16 public routes. Target responsive widths passed. Final mobile Lighthouse: Performance 98, Accessibility 100, Best Practices 100, SEO 100; CLS 0.001. See QA.md.
+Lint, typecheck, production build and all 18 tests passed. Automated accessibility scans found no WCAG A/AA violations across all 32 localized URLs. Target responsive widths passed. English content-expansion Lighthouse baseline: Performance 98, Accessibility 100, Best Practices 100, SEO 100; CLS 0.001. See QA.md.
 
-Before public launch: set real canonical/demo/contact configuration, verify the live inquiry receiver, approve product screenshots and replace privacy/terms templates with organization-approved text. Commercial prices and legal operator details remain configurable; none were invented.
+Before public launch: set real canonical/demo/contact configuration, verify the live inquiry receiver, approve product screenshots and replace privacy/terms templates with organization-approved text. Legal operator details require confirmation; none were invented.
 
 ## Open-source content expansion
 
 Removed the pricing page and its content configuration, header/footer links and sitemap entry. Repositioned Contact Us for custom support and introduced GitHub icons, star requests and contribution guidance throughout the site. Expanded each product and solution route with full workflow explanations, role/setup detail, multiple real screenshots, operational checklists and documentation links. Enriched the homepage with service, management and localization galleries, a community section and custom support overview. The demo now follows four complete illustrated workflow stages. Documentation includes evaluation, deployment, production preparation and contribution guidance; legal review templates include actual site/data-flow context without inventing final legal commitments.
+
+## Burmese localization
+
+Added Burmese versions of all 16 public pages under `/my`, with translated workflows, navigation, contact form labels/validation/delivery states, screenshot captions and alternative text, source/star/support prompts, documentation context and legal review templates. A header switch preserves page, query parameters and anchors. Separate root layouts render `lang="en"` / `lang="my"` correctly, sharing the existing brand components and self-hosted fonts. Localized metadata includes canonical and reciprocal language alternates; the sitemap lists 32 URLs. Burmese content is prerendered, with runtime configuration retained for contact delivery. Product screenshots and externally linked repository documentation keep their original captured/source language.
+
+Burmese homepage mobile Lighthouse: Performance 98, Accessibility 100, Best Practices 100, SEO 100; LCP 2.3 seconds and CLS 0.008. See reports/lighthouse-burmese-summary.json. All 18 automated tests pass, including both-language regression checks.

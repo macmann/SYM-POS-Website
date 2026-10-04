@@ -1,3 +1,4 @@
+import type { Locale } from "@/lib/locale";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -67,6 +68,7 @@ export function ProductScreenshot({
   caption,
   priority = false,
   chrome = true,
+  locale = "en",
   sizes = "(max-width: 767px) 90vw, (max-width: 1200px) 50vw, 700px",
 }: {
   src: string;
@@ -74,6 +76,7 @@ export function ProductScreenshot({
   caption?: string;
   priority?: boolean;
   chrome?: boolean;
+  locale?: Locale;
   sizes?: string;
 }) {
   return (
@@ -83,14 +86,18 @@ export function ProductScreenshot({
           <span />
           <span />
           <span />
-          <small>SYM POS · Product preview</small>
+          <small>
+            {locale === "my"
+              ? "SYM POS · စနစ်နမူနာ"
+              : "SYM POS · Product preview"}
+          </small>
         </div>
       )}
       <a
         href={src}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Open full-size image: ${alt}`}
+        aria-label={`${locale === "my" ? "ပုံအပြည့်အစုံကြည့်ရန်" : "Open full-size image"}: ${alt}`}
       >
         <Image
           src={src}
@@ -106,7 +113,8 @@ export function ProductScreenshot({
         <figcaption>
           {caption}
           <a href={src} target="_blank" rel="noopener noreferrer">
-            Open full-size <ArrowUpRight size={12} />
+            {locale === "my" ? "ပုံအပြည့်အစုံ" : "Open full-size"}{" "}
+            <ArrowUpRight size={12} />
           </a>
         </figcaption>
       )}

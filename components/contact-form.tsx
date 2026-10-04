@@ -1,4 +1,10 @@
 "use client";
+import {
+  contactTranslation,
+  localizedHref,
+  translateLabel,
+  type Locale,
+} from "@/lib/locale";
 import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -9,10 +15,13 @@ import {
 export function ContactForm({
   configured,
   email,
+  locale = "en",
 }: {
   configured: boolean;
   email?: string;
+  locale?: Locale;
 }) {
+  const t = (en: string, my: string) => (locale === "my" ? my : en);
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -70,23 +79,34 @@ export function ContactForm({
     <form ref={form} className="contact-form" onSubmit={submit} noValidate>
       {!configured && (
         <div className="form-status">
-          Web submissions are not configured yet.{" "}
+          {t(
+            "Web submissions are not configured yet.",
+            "ဝဘ်ဆိုက်မှ ပေးပို့မှုကို မပြင်ဆင်ရသေးပါ။",
+          )}{" "}
           {email ? (
             <>
               <a className="text-link" href={`mailto:${email}`}>
-                Email {email}
+                {t("Email", "အီးမေးလ်")} {email}
               </a>{" "}
-              to send your inquiry directly.
+              {t(
+                "to send your inquiry directly.",
+                "သို့ တိုက်ရိုက်ပေးပို့နိုင်ပါသည်။",
+              )}
             </>
           ) : (
-            "The website operator must configure a contact webhook or contact email before inquiries can be delivered."
+            t(
+              "The website operator must configure a contact webhook or contact email before inquiries can be delivered.",
+              "မေးမြန်းချက်များ ပေးပို့နိုင်ရန် ဝဘ်ဆိုက်တာဝန်ရှိသူက contact webhook သို့မဟုတ် ဆက်သွယ်ရန် အီးမေးလ်ကို ပြင်ဆင်ပေးရပါမည်။",
+            )
           )}
         </div>
       )}
       <div className="form-grid">
         {contactFields.map((field) => (
           <div className="field" key={field.name}>
-            <label htmlFor={`contact-${field.name}`}>{field.label}</label>
+            <label htmlFor={`contact-${field.name}`}>
+              {translateLabel(field.label, locale)}
+            </label>
             <input
               id={`contact-${field.name}`}
               name={field.name}
@@ -115,40 +135,48 @@ export function ContactForm({
             />
             {errors[field.name] && (
               <span className="field-error" id={`${field.name}-error`}>
-                {errors[field.name]}
+                {contactTranslation(errors[field.name]!, locale)}
               </span>
             )}
           </div>
         ))}
         <div className="field full">
-          <label htmlFor="contact-message">Message</label>
+          <label htmlFor="contact-message">{t("Message", "မေးမြန်းစာ")}</label>
           <textarea
             id="contact-message"
             name="message"
             required
             maxLength={3000}
-            placeholder="Tell us about your restaurant, workflows and deployment plans."
+            placeholder={t(
+              "Tell us about your restaurant, workflows and deployment plans.",
+              "သင့်စားသောက်ဆိုင်၊ လုပ်ငန်းစဉ်နှင့် တပ်ဆင်မည့်အစီအစဉ်ကို ရေးပါ။",
+            )}
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? "message-error" : undefined}
           />
           {errors.message && (
             <span id="message-error" className="field-error">
-              {errors.message}
+              {contactTranslation(errors.message!, locale)}
             </span>
           )}
         </div>
       </div>
       <div className="honeypot" aria-hidden="true">
         <label>
-          Leave blank
+          {t("Leave blank", "မဖြည့်ပါနှင့်")}
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
       <p className="form-disclaimer">
-        Use this form for business inquiries. Please don’t include passwords or
-        payment details.{" "}
-        <a href="/privacy" style={{ textDecoration: "underline" }}>
-          Privacy notice
+        {t(
+          "Use this form for business inquiries. Please don’t include passwords or payment details.",
+          "လုပ်ငန်းဆိုင်ရာ မေးမြန်းမှုများအတွက် ဤဖောင်ကို သုံးပါ။ Password သို့မဟုတ် ငွေပေးချေမှုအသေးစိတ်များ မထည့်ပါနှင့်။",
+        )}{" "}
+        <a
+          href={localizedHref("/privacy", locale)}
+          style={{ textDecoration: "underline" }}
+        >
+          {t("Privacy notice", "ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ အသိပေးချက်")}
         </a>
       </p>
       <div
@@ -156,7 +184,7 @@ export function ContactForm({
         aria-live="polite"
         className={message ? `form-status ${status}` : undefined}
       >
-        {message}
+        {message ? contactTranslation(message, locale) : ""}
       </div>
       <button
         className="button button-dark"
@@ -164,10 +192,10 @@ export function ContactForm({
         disabled={status === "submitting" || status === "success"}
       >
         {status === "submitting"
-          ? "Sending…"
+          ? t("Sending…", "ပေးပို့နေပါသည်…")
           : status === "success"
-            ? "Request delivered"
-            : "Send request"}
+            ? t("Request delivered", "ပေးပို့ပြီးပါပြီ")
+            : t("Send request", "တောင်းဆိုချက်ပေးပို့ရန်")}
         <ArrowUpRight size={16} />
       </button>
     </form>
