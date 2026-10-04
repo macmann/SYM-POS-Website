@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { CommunitySection, SupportSection } from "@/components/community";
+import { ScreenshotGallery } from "@/components/screenshot-gallery";
+import { screenshotGroups } from "@/content/screenshots";
 import {
   ArrowUpRight,
   Check,
@@ -70,7 +73,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">
             <span />
-            LOCAL-FIRST RESTAURANT OPERATIONS
+            OPEN-SOURCE · LOCAL-FIRST RESTAURANT OPERATIONS
           </p>
           <h1>
             Run your restaurant.
@@ -81,9 +84,9 @@ export default function Home() {
             </span>
           </h1>
           <p className="hero-description">
-            From the first order to the last bill. One platform for your floor,
-            kitchen, counter and back office—built to work on your restaurant’s
-            local network.
+            From the first order to the last bill. One open-source platform for
+            your floor, kitchen, counter and back office—built to work on your
+            restaurant’s local network.
           </p>
           <div className="hero-actions">
             <Button href="/features">Explore SYM POS</Button>
@@ -91,6 +94,10 @@ export default function Home() {
               View Demo
             </Button>
           </div>
+          <p className="hero-source-note">
+            Explore the code, self-host a local installation and help the
+            project grow. <a href={site.github}>Star SYM POS on GitHub.</a>
+          </p>
           <div className="hero-checks">
             <span>
               <Check size={15} />
@@ -289,6 +296,12 @@ export default function Home() {
           </span>
         </div>
       </section>
+      <ScreenshotGallery
+        eyebrow="THE WORKFLOW, IN THE PRODUCT"
+        title="From your floor to the final receipt"
+        description="Explore actual SYM POS workspaces, captured from a local evaluation with sample menu items, tables and orders. Open any image for a full-size view."
+        items={screenshotGroups.service}
+      />
       <section className="section operations-section">
         <SectionHeading
           eyebrow="BEYOND THE ORDER"
@@ -373,6 +386,12 @@ export default function Home() {
           Understand the multi-location architecture <ArrowUpRight size={16} />
         </Link>
       </section>
+      <ScreenshotGallery
+        eyebrow="A CLOSER LOOK AT MANAGEMENT"
+        title="The tools behind a well-run shift"
+        description="Review restaurant stock, understand recorded activity, keep the menu current and investigate supported operational changes from browser-based administration workspaces."
+        items={screenshotGroups.management}
+      />
       <section className="section trust-grid">
         <article>
           <Languages />
@@ -409,6 +428,14 @@ export default function Home() {
           </Link>
         </article>
       </section>
+      <ScreenshotGallery
+        eyebrow="LANGUAGE AND PRINTING"
+        title="Configure the details your team works with"
+        description="English and Myanmar resources support multilingual teams. Plan the browser labels and physical receipt rendering together; Myanmar output needs compatible fonts and a Unicode-capable printing path."
+        items={screenshotGroups.localization}
+      />
+      <CommunitySection />
+      <SupportSection />
       <section className="section faq-section">
         <SectionHeading
           eyebrow="A FEW PRACTICAL ANSWERS"

@@ -18,6 +18,8 @@ import {
   ChartNoAxesCombined,
   BookOpen,
 } from "lucide-react";
+import { site } from "@/content/site";
+import { Github, Star } from "lucide-react";
 import { features } from "@/content/features";
 import { faq } from "@/content/faq";
 export function Button({
@@ -84,16 +86,30 @@ export function ProductScreenshot({
           <small>SYM POS · Product preview</small>
         </div>
       )}
-      <Image
-        src={src}
-        alt={alt}
-        width={1200}
-        height={750}
-        priority={priority}
-        sizes={sizes}
-        fetchPriority={priority ? "high" : undefined}
-      />
-      {caption && <figcaption>{caption}</figcaption>}
+      <a
+        href={src}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open full-size image: ${alt}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={750}
+          priority={priority}
+          sizes={sizes}
+          fetchPriority={priority ? "high" : undefined}
+        />
+      </a>
+      {caption && (
+        <figcaption>
+          {caption}
+          <a href={src} target="_blank" rel="noopener noreferrer">
+            Open full-size <ArrowUpRight size={12} />
+          </a>
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -277,21 +293,26 @@ export function CTASection() {
       <div>
         <p className="eyebrow">
           <span />
-          LET’S TALK RESTAURANT OPERATIONS
+          OPEN SOURCE FOR RESTAURANT OPERATIONS
         </p>
         <h2>
-          Ready for a better
+          Explore the project.
           <br />
-          way to run your restaurant?
+          Build your restaurant’s next chapter.
         </h2>
         <p>
-          See how ordering, preparation, billing and management work together.
+          Start with the source and documentation. Contact us for help with a
+          local installation, workflow configuration or custom development.
         </p>
       </div>
       <div className="cta-buttons">
-        <Button href="/contact?intent=demo">Request a Demo</Button>
-        <Link href="/features">
-          Explore Features <ArrowUpRight size={16} />
+        <a href={site.github} className="button button-dark">
+          <Github size={18} />
+          Star on GitHub
+          <Star size={16} />
+        </a>
+        <Link href="/contact?intent=support">
+          Contact Us for Custom Support <ArrowUpRight size={16} />
         </Link>
       </div>
     </section>

@@ -27,4 +27,24 @@ export const faq = [
     "Can I evaluate or self-host SYM POS?",
     "An in-memory evaluation mode is available, but its data disappears on restart. Persistent production deployments use PostgreSQL and need backups, network planning and secure infrastructure.",
   ],
+  [
+    "Is SYM POS open source?",
+    "Yes. Explore the application source and documentation on GitHub, follow development and evaluate a local installation. Refer to the repository for its current licensing and contribution guidance. If the project helps you, please give it a star.",
+  ],
+  [
+    "Do I need a paid plan to explore the project?",
+    "This site does not offer subscription tiers or a software pricing page. Start with the open-source repository and documentation. Custom deployment support or development can be discussed separately through Contact Us.",
+  ],
+  [
+    "Can I get help with installation or a custom workflow?",
+    "Contact us with your deployment, device and workflow requirements. Installation assistance, configuration and custom development are discussed according to feasibility, scope and availability; no support package or response-time promise is implied.",
+  ],
+  [
+    "Where should I report a bug?",
+    "Use the product repository’s GitHub issues for a reproducible problem. Include the version, deployment mode and reproduction steps, and remove passwords, customer data and sensitive configuration from any attachments.",
+  ],
+  [
+    "Can an individual terminal keep taking orders away from the LAN?",
+    "The browser needs to reach the local application server. Local-first removes the need for continuous public Internet access; it does not turn every terminal into an independent offline database.",
+  ],
 ];

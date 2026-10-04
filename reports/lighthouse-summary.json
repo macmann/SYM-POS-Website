@@ -1,18 +1,18 @@
 {
   "testedURL": "http://127.0.0.1:3000/",
-  "fetchTime": "2026-10-04T04:33:29.382Z",
+  "fetchTime": "2026-10-04T05:32:40.908Z",
   "lighthouseVersion": "13.5.0",
   "mode": "Default Lighthouse mobile simulation against local production Next.js server",
   "scores": {
-    "performance": 94,
+    "performance": 98,
     "accessibility": 100,
     "best-practices": 100,
     "seo": 100,
     "agentic-browsing": 100
   },
   "metrics": {
-    "largest-contentful-paint": "2.9\u00a0s",
-    "cumulative-layout-shift": "0",
+    "largest-contentful-paint": "2.3\u00a0s",
+    "cumulative-layout-shift": "0.001",
     "total-blocking-time": "50\u00a0ms"
   }
 }

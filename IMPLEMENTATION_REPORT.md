@@ -2,11 +2,11 @@
 
 ## 1. Created
 
-Independent Next.js 16 / React 19 App Router marketing website with strict TypeScript, Tailwind 4, a reusable responsive design, local commercial configuration, original vector rendering of the product mark, self-hosted Inter/Myanmar fonts, contact delivery integration and independent deployment files. RestaurantPOS is unchanged and is not a runtime dependency.
+Independent Next.js 16 / React 19 App Router marketing website with strict TypeScript, Tailwind 4, a reusable responsive design, local content configuration, original vector rendering of the product mark, self-hosted Inter/Myanmar fonts, contact delivery integration and independent deployment files. RestaurantPOS is unchanged and is not a runtime dependency.
 
 ## 2. Routes
 
-`/`, `/features`, `/solutions/restaurants`, `/solutions/cafes`, `/solutions/multi-location`, `/offline-first`, `/kitchen-display`, `/inventory`, `/reports`, `/hardware`, `/security`, `/pricing`, `/demo`, `/docs`, `/contact`, `/privacy`, `/terms`.
+`/`, `/features`, `/solutions/restaurants`, `/solutions/cafes`, `/solutions/multi-location`, `/offline-first`, `/kitchen-display`, `/inventory`, `/reports`, `/hardware`, `/security`, `/demo`, `/docs`, `/contact`, `/privacy`, `/terms`.
 
 Additional technical routes: `/api/contact`, `/sitemap.xml`, `/robots.txt`, `/opengraph-image`, and a custom 404.
 
@@ -24,7 +24,7 @@ No independent terminal offline operation, guaranteed uptime, integrated gateway
 
 ## 6. Screenshots
 
-13 actual product WebP captures included: ordering, tables, order station, kitchen, bar, billing, inventory, reports, menu, users, audit, settings, cloud settings. Captured from an isolated local in-memory evaluation using synthetic data; no product source or dependencies copied into the marketing app. No required screenshot slot remains a placeholder. Optional upgrades: richer paid-sales reporting, receipt closeout and connected PostgreSQL cloud diagnostics. SCREENSHOTS.md records provenance. Review captures for publication approval.
+26 actual product WebP captures included: ordering, tables, order station, kitchen, bar, billing, inventory, reports, menu, users, audit, settings, cloud settings. Captured from an isolated local in-memory evaluation using synthetic data; no product source or dependencies copied into the marketing app. No required screenshot slot remains a placeholder. Additional captures now include paid billing, receipt preview, daily summary, product mix, operations and inventory reports, kitchen progress/history, waiter progress, floor layout, localization and printer setup. Connected PostgreSQL cloud diagnostics remain an optional future capture. SCREENSHOTS.md records provenance. Review captures for publication approval.
 
 ## 7. Environment
 
@@ -47,6 +47,10 @@ Create a separate application from this repository. Dockerfile build pack; `/Doc
 
 ## 10. QA and launch status
 
-Lint, typecheck, production build and all 11 tests passed. Automated accessibility scans found no WCAG A/AA violations on tested pages. Target responsive widths passed. Final mobile Lighthouse: Performance 94, Accessibility 100, Best Practices 100, SEO 100; CLS 0. See QA.md.
+Lint, typecheck, production build and all 13 tests passed. Automated accessibility scans found no WCAG A/AA violations across all 16 public routes. Target responsive widths passed. Final mobile Lighthouse: Performance 98, Accessibility 100, Best Practices 100, SEO 100; CLS 0.001. See QA.md.
 
 Before public launch: set real canonical/demo/contact configuration, verify the live inquiry receiver, approve product screenshots and replace privacy/terms templates with organization-approved text. Commercial prices and legal operator details remain configurable; none were invented.
+
+## Open-source content expansion
+
+Removed the pricing page and its content configuration, header/footer links and sitemap entry. Repositioned Contact Us for custom support and introduced GitHub icons, star requests and contribution guidance throughout the site. Expanded each product and solution route with full workflow explanations, role/setup detail, multiple real screenshots, operational checklists and documentation links. Enriched the homepage with service, management and localization galleries, a community section and custom support overview. The demo now follows four complete illustrated workflow stages. Documentation includes evaluation, deployment, production preparation and contribution guidance; legal review templates include actual site/data-flow context without inventing final legal commitments.

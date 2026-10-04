@@ -12,7 +12,7 @@ Reference: https://github.com/macmann/RestaurantPOS at `32bcfaea8b9ebbb487370c90
 | Reports | Daily summary, business day, product mix, station, exceptions, CSV/print | backend/reports/service.ts; frontend/reports/export.ts; tests/daily-summary.unit.test.ts; tests/product-mix.unit.test.ts | Verified |
 | Menu import | Validated transactional .xlsx imports, 5000 rows/5MB | docs/menu-bulk-import.md; backend/menu/bulkImport/parser.ts; backend/menu/bulkImport/service.ts; tests/menu-bulk-import.unit.test.ts | Verified |
 | Authentication | PBKDF2 password hashes, hashed session tokens, active status and RBAC | backend/auth/service.ts; backend/auth/sessionRepository.ts; backend/auth/permissions.ts; backend/auth/middleware.ts | Verified |
-| Roles | waitstaff, cashier, kitchen, bar, shift_lead, inventory_clerk, manager, admin, superadmin | backend/auth/permissions.ts; userguide.md (rbac-matrix.md lists fewer roles) | Verified |
+| Roles | waitstaff, cashier, kitchen, bar, shift_lead, inventory_clerk, manager, admin, superadmin; specialized reporting: financial_analyst, operations_analyst, loss_prevention, inventory_accountant | backend/auth/permissions.ts; userguide.md (rbac-matrix.md lists fewer roles) | Verified |
 | Audit | Operational traceability; no immutability claim | backend/audit/service.ts; frontend/admin/audit-viewer.ts | Verified |
 | Persistence | PostgreSQL production; temporary in-memory evaluation | backend/db/client.ts; backend/db/repositoryStore.ts; tests/database-persistence.e2e.test.ts | Verified |
 | Localization | English/Myanmar resources and editable labels | backend/i18n/resources.ts; frontend/i18n/locale-switcher.ts; userguide.md | Verified |
@@ -23,3 +23,5 @@ Reference: https://github.com/macmann/RestaurantPOS at `32bcfaea8b9ebbb487370c90
 | Integrated payments, forecasting, native apps, certifications | Not marketed; no sufficient implementation or certification evidence | backend/integrations/paymentTerminal.ts is insufficient for a gateway claim | Not implemented |
 
 Reviewed README, userguide, STATUS, architecture, ERD, LAN, hybrid, cloud sync, pricing rules, RBAC, E2E readiness, frontend screens, backend services/endpoints, shared contracts, package and test coverage. Architecture prose includes aspirational immutability and integrations; those statements are intentionally excluded. Full transaction replication and centralized inventory are not advertised.
+
+Open-source positioning follows the product owner’s explicit instruction. No specific software license, free hosted service, support SLA or permissive-use terms are invented. GitHub star links do not claim a count or perform automatic account actions. The removed software pricing page is unrelated to the retained product billing-calculation documentation.

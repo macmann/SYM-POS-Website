@@ -1,61 +1,89 @@
 import { PageHero } from "@/components/detail-page";
-import { Button, ProductScreenshot, CTASection } from "@/components/product";
+import {
+  Button,
+  ProductScreenshot,
+  CTASection,
+  SectionHeading,
+} from "@/components/product";
+import { CommunitySection } from "@/components/community";
 import { demoHref, demoLabel, site } from "@/content/site";
+import { tour } from "@/content/tour";
+import { Check } from "lucide-react";
 import { metadata as createMetadata } from "@/lib/seo";
 export const metadata = createMetadata(
-  "See SYM POS in action",
-  "Follow a restaurant demo from sign-in and table selection to preparation, billing and reports.",
+  "Explore the SYM POS workflow",
+  "Follow actual SYM POS screens through ordering, preparation, billing and reports. Evaluate the open-source project or request a guided walkthrough.",
   "/demo",
 );
 export default function Page() {
   return (
     <>
       <PageHero
-        eyebrow="SEE THE WORKFLOW"
-        title="See SYM POS in action."
-        description="Walk through a restaurant shift, from the first table to the final receipt. Explore how the floor, preparation team and cashier connect."
+        eyebrow="A WALKTHROUGH OF REAL RESTAURANT WORK"
+        title="See the whole shift, one workspace at a time."
+        description="Explore actual SYM POS screens with synthetic evaluation data. Follow an order from the floor to preparation, payment and management review, then try the open-source application yourself."
         path="/demo"
         actions={false}
       />
-      <section className="section detail-block">
-        <div>
-          <h2>Follow an order through service.</h2>
-          <ol
-            className="demo-journey"
-            style={{ paddingLeft: 20, marginTop: 25 }}
-          >
-            {[
-              "Sign in with the appropriate role",
-              "Select a table",
-              "Add menu items and notes",
-              "Send the order to preparation",
-              "Review the kitchen queue",
-              "Update preparation status",
-              "Generate the bill",
-              "Record payment",
-              "View supported reports",
-            ].map((x) => (
-              <li key={x} style={{ padding: "6px 0", fontSize: 13 }}>
-                {x}
-              </li>
-            ))}
-          </ol>
-          <div style={{ marginTop: 25 }}>
-            <Button href={demoHref}>{demoLabel}</Button>
-          </div>
-          {!site.demo && (
-            <p className="callout">
-              A public live demo is not configured yet. Request a guided
-              walkthrough using the contact page.
-            </p>
-          )}
+      <section className="section">
+        <div className="hero-actions">
+          <Button href={demoHref}>{demoLabel}</Button>
+          <Button href={site.github} secondary>
+            Explore the source
+          </Button>
         </div>
-        <ProductScreenshot
-          src="/product/waiter.webp"
-          alt="Actual SYM POS waiter ordering view"
-          caption="Actual product screen · Sample evaluation data"
-        />
+        {!site.demo && (
+          <div className="callout">
+            <strong>Prefer a guided walkthrough?</strong>A public hosted demo is
+            not configured yet. Use Contact Us to request a walkthrough or
+            discuss your own evaluation installation. The screenshots below come
+            from the actual application, not a simulated interface.
+          </div>
+        )}
+        {tour.map((step, i) => (
+          <article className="detail-block enriched-block" key={step.title}>
+            <div className="section-copy">
+              <SectionHeading
+                eyebrow={`0${i + 1} — THE DEMO JOURNEY`}
+                title={step.title}
+                description={step.description}
+              />
+              <ul className="check-list">
+                {step.checks.map((c) => (
+                  <li key={c}>
+                    <Check />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ProductScreenshot
+              src={`/product/${step.screen}.webp`}
+              alt={`Actual SYM POS demo: ${step.title}`}
+              caption="Actual SYM POS screen · Synthetic evaluation data"
+            />
+          </article>
+        ))}
+        <div className="page-guide">
+          <h2>Evaluate locally, then plan production.</h2>
+          <p>
+            Start with the installation instructions in the product repository.
+            In-memory mode is useful for a disposable walkthrough and loses data
+            when the process stops. A real restaurant installation needs
+            persistent PostgreSQL, secure accounts, backups and a reliable local
+            network.
+          </p>
+          <div className="hero-actions">
+            <Button href={`${site.github}/blob/main/README.md`} secondary>
+              Read installation instructions
+            </Button>
+            <Button href="/contact?intent=support" secondary>
+              Ask about custom support
+            </Button>
+          </div>
+        </div>
       </section>
+      <CommunitySection />
       <CTASection />
     </>
   );

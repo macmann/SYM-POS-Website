@@ -10,7 +10,6 @@ export const routes = [
   "/reports",
   "/hardware",
   "/security",
-  "/pricing",
   "/demo",
   "/docs",
   "/contact",

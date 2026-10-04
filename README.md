@@ -36,9 +36,9 @@ Tests assume no live demo URL or webhook is configured. Cover every route, metad
 
 ## Content and screenshots
 
-`content/` holds brand, navigation, features, solutions, detailed page copy, FAQ, resources, pricing and route inventory. Reusable server-rendered components live in `components/`; only navigation and contact interaction need client components. Colors, spacing, focus and reduced-motion rules live in `styles/globals.css`. Inter and Noto Sans Myanmar are self-hosted npm fonts; no Google Fonts runtime request.
+`content/` holds brand, navigation, features, solutions, detailed page copy, FAQ, resources, walkthrough, screenshot galleries and route inventory. Reusable server-rendered components live in `components/`; only navigation and contact interaction need client components. Colors, spacing, focus and reduced-motion rules live in `styles/globals.css`. Inter and Noto Sans Myanmar are self-hosted npm fonts; no Google Fonts runtime request.
 
-`public/product/` contains 13 genuine screenshots from an isolated in-memory product evaluation, using synthetic starter data and sample orders. SCREENSHOTS.md records the screen sources and remaining optional improvements. Original neutral SVG fallback assets are retained but not displayed. Replace WebP files with refreshed approved captures at the same paths and preserve 1200×750 dimensions. Captions explicitly identify sample evaluation data. Product screenshots never include customer records, credentials or live infrastructure secrets. Brand assets reproduce the product’s plate-and-receipt mark in the marketing palette; see BRAND.md.
+`public/product/` contains 26 genuine screenshots from an isolated in-memory product evaluation, using synthetic starter data and sample orders and a paid sample bill. SCREENSHOTS.md records the screen sources and remaining optional improvements. Original neutral SVG fallback assets are retained but not displayed. Replace WebP files with refreshed approved captures at the same paths and preserve 1200×750 dimensions. Captions explicitly identify sample evaluation data. Product screenshots never include customer records, credentials or live infrastructure secrets. Brand assets reproduce the product’s plate-and-receipt mark in the marketing palette; see BRAND.md.
 
 ## Environment variables
 
@@ -90,4 +90,10 @@ SYM-POS-Website repo → separate Coolify app → public marketing domain
 
 ## Launch checklist
 
-Replace legal templates with organization-approved privacy and terms. Review the captured screenshots, configure and verify inquiry delivery, configure actual site/demo domains and commercial content. Confirm deployed security headers, request/rate limits, TLS and operational monitoring. No fake customers, ratings, prices or certifications are used. Review claims against any newer product version before publishing.
+Replace legal templates with organization-approved privacy and terms. Review the captured screenshots, configure and verify inquiry delivery, configure actual site/demo domains and custom-support content. Confirm deployed security headers, request/rate limits, TLS and operational monitoring. No fake customers, ratings, prices or certifications are used. Review claims against any newer product version before publishing.
+
+## Open-source site direction
+
+The website emphasizes the open-source RestaurantPOS project, self-hosted evaluation and GitHub participation. Header, footer, community sections and final calls to action link directly to the configurable product GitHub URL and invite stars without fabricated counts. Contact Us is for custom deployment support, configuration, guided walkthroughs and custom-development discussions. There is no software pricing route: `/pricing` returns 404 and is absent from navigation and sitemap. The billing-calculation documentation link remains because it explains product tax and discounts, not software pricing.
+
+Every main product/solution page contains detailed workflow text, setup considerations, feature bullets, multiple real screenshots and relevant guide links. Screenshots open at full size for inspection. Legal pages remain clearly marked templates requiring operator approval; the site does not invent license terms or support guarantees.

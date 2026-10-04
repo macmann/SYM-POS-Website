@@ -25,7 +25,7 @@ export const resources = [
     "Workbook rules, validation and confirmation.",
   ],
   [
-    "Pricing rules",
+    "Billing calculations",
     "docs/pricing-rules.md",
     "Product billing calculations, discounts and tax.",
   ],
