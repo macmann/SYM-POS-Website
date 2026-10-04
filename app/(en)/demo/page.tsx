@@ -6,13 +6,14 @@ import {
   SectionHeading,
 } from "@/components/product";
 import { CommunitySection } from "@/components/community";
-import { demoHref, demoLabel, site } from "@/content/site";
+import { site } from "@/content/site";
+import { CloudDemo } from "@/components/cloud-demo";
 import { tour } from "@/content/tour";
 import { Check } from "lucide-react";
 import { metadata as createMetadata } from "@/lib/seo";
 export const metadata = createMetadata(
   "Explore the SYM POS workflow",
-  "Follow actual SYM POS screens through ordering, preparation, billing and reports. Evaluate the open-source project or request a guided walkthrough.",
+  "Follow actual SYM POS screens through ordering, preparation, billing and reports. Try the cloud demo at demo.sympos.site with the public demo account.",
   "/demo",
 );
 export default function Page() {
@@ -26,20 +27,7 @@ export default function Page() {
         actions={false}
       />
       <section className="section">
-        <div className="hero-actions">
-          <Button href={demoHref}>{demoLabel}</Button>
-          <Button href={site.github} secondary>
-            Explore the source
-          </Button>
-        </div>
-        {!site.demo && (
-          <div className="callout">
-            <strong>Prefer a guided walkthrough?</strong>A public hosted demo is
-            not configured yet. Use Contact Us to request a walkthrough or
-            discuss your own evaluation installation. The screenshots below come
-            from the actual application, not a simulated interface.
-          </div>
-        )}
+        <CloudDemo />
         {tour.map((step, i) => (
           <article className="detail-block enriched-block" key={step.title}>
             <div className="section-copy">

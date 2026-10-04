@@ -8,7 +8,7 @@ export const site = {
     process.env.NEXT_PUBLIC_GITHUB_URL,
     "https://github.com/macmann/RestaurantPOS",
   )!,
-  demo: safeUrl(process.env.NEXT_PUBLIC_DEMO_URL),
+  demo: safeUrl(process.env.NEXT_PUBLIC_DEMO_URL, "https://demo.sympos.site/")!,
   company: process.env.NEXT_PUBLIC_COMPANY_NAME || "SYM POS",
 };
 const demoCTA = getDemoCTA(site.demo);

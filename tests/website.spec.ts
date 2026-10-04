@@ -68,14 +68,20 @@ test("keyboard product dropdown", async ({ page }) => {
   await expect(summary).toBeFocused();
   await expect(summary.locator("..")).not.toHaveAttribute("open", "");
 });
-test("demo uses guided request when public URL is absent", async ({ page }) => {
-  await page.goto("/demo");
-  await expect(
-    page.getByRole("link", { name: "Request a Demo", exact: true }).first(),
-  ).toHaveAttribute("href", "/contact?intent=demo");
-  await expect(
-    page.getByRole("link", { name: "Launch Live Demo" }),
-  ).toHaveCount(0);
+test("cloud demo link and public login are available in both languages", async ({
+  page,
+}) => {
+  for (const path of ["/demo", "/my/demo"]) {
+    await page.goto(path);
+    await expect(page.locator(".cloud-demo a.button")).toHaveAttribute(
+      "href",
+      "https://demo.sympos.site/",
+    );
+    await expect(page.locator(".demo-credentials")).toContainText("superadmin");
+    await expect(page.locator(".demo-credentials")).toContainText(
+      "password123",
+    );
+  }
 });
 test("contact validation and honest delivery fallback", async ({
   page,
