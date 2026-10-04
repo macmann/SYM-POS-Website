@@ -60,3 +60,7 @@ Removed the pricing page and its content configuration, header/footer links and 
 Added Burmese versions of all 16 public pages under `/my`, with translated workflows, navigation, contact form labels/validation/delivery states, screenshot captions and alternative text, source/star/support prompts, documentation context and legal review templates. A header switch preserves page, query parameters and anchors. Separate root layouts render `lang="en"` / `lang="my"` correctly, sharing the existing brand components and self-hosted fonts. Localized metadata includes canonical and reciprocal language alternates; the sitemap lists 32 URLs. Burmese content is prerendered, with runtime configuration retained for contact delivery. Product screenshots and externally linked repository documentation keep their original captured/source language.
 
 Burmese homepage mobile Lighthouse: Performance 98, Accessibility 100, Best Practices 100, SEO 100; LCP 2.3 seconds and CLS 0.008. See reports/lighthouse-burmese-summary.json. All 18 automated tests pass, including both-language regression checks.
+
+## Public cloud demo
+
+Updated the English and Burmese demo pages with an explicit https://demo.sympos.site/ link and the operator-provided public login: superadmin / password123. The cloud URL is the default demo CTA destination, with optional environment override. A shared localized component presents the link, selectable credentials and sample-data guidance. Regression coverage checks both demo pages and their credentials.

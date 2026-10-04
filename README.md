@@ -32,7 +32,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm test
 ```
 
-Tests assume no live demo URL or webhook is configured. Cover every route, metadata, navigation/keyboard, mobile menu, FAQ, CTA destinations, validation, honest unconfigured contact delivery, internal links and overflow at 320–1920px. Performance target: Lighthouse 90+ / accessibility 95+ / best practices 95+ / SEO 95+. These targets are not public claims or measured guarantees. Run production Lighthouse before launch on the deployed origin.
+Tests assume the default cloud demo URL and no contact webhook. Cover every route, metadata, navigation/keyboard, mobile menu, FAQ, CTA destinations, validation, honest unconfigured contact delivery, internal links and overflow at 320–1920px. Performance target: Lighthouse 90+ / accessibility 95+ / best practices 95+ / SEO 95+. These targets are not public claims or measured guarantees. Run production Lighthouse before launch on the deployed origin.
 
 ## Content and screenshots
 
@@ -55,7 +55,7 @@ Localization tests cover every Burmese route and screenshot asset, metadata, lan
 | Variable | Purpose |
 |---|---|
 | NEXT_PUBLIC_SITE_URL | Canonical absolute website origin; defaults to localhost for development. Set your real website domain before building. |
-| NEXT_PUBLIC_DEMO_URL | Optional separate product demo origin; when absent, demo CTA requests a guided demo. |
+| NEXT_PUBLIC_DEMO_URL | Optional override for demo CTAs; defaults to https://demo.sympos.site/. Both demo pages publish the cloud instance and its public superadmin/password123 login. |
 | NEXT_PUBLIC_GITHUB_URL | Product source repository URL; default RestaurantPOS. |
 | NEXT_PUBLIC_COMPANY_NAME | Display operator name; default SYM POS. Confirm actual legal identity before publishing legal text. |
 | NEXT_PUBLIC_ANALYTICS_ID | Optional Plausible domain. Only a valid configured domain loads the Plausible script; no tracker or analytics request by default. Requires independent Plausible service setup and privacy review. |

@@ -2102,3 +2102,7 @@ html[lang="my"] .check-list li, html[lang="my"] .community-actions a { min-width
   html[lang="my"] .hero-actions { align-items: stretch; }
   html[lang="my"] .button { white-space: normal; }
 }
+.demo-credentials { display: flex; flex-wrap: wrap; gap: 24px 64px; margin: 24px 0; }
+.demo-credentials dt { font-size: 14px; color: var(--ink); }
+.demo-credentials dd { margin: 6px 0 0; font-size: 20px; }
+.demo-credentials code { user-select: all; overflow-wrap: anywhere; }

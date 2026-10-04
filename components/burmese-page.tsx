@@ -1,3 +1,4 @@
+import { CloudDemo } from "@/components/cloud-demo";
 import Link from "next/link";
 import { ArrowUpRight, Check, Github, Star } from "lucide-react";
 import { burmeseFAQ, burmesePages } from "@/content/burmese";
@@ -166,21 +167,7 @@ export function BurmesePage({ path }: { path: string }) {
       </section>
       {path === "/demo" && (
         <section className="section">
-          <div className="callout">
-            <h2>
-              {site.demo
-                ? "Live demo ကို စမ်းသပ်ပါ"
-                : "လမ်းညွှန်သရုပ်ပြမှု တောင်းဆိုပါ"}
-            </h2>
-            <p>
-              {site.demo
-                ? "Live demo သည် ပြင်ပ deployment ဖြစ်သည်။ ဖောက်သည်ဒေတာအမှန်နှင့် လျှို့ဝှက်အချက်အလက်ကို မထည့်ပါနှင့်။"
-                : "လက်ရှိ hosted demo လင့်ခ်ကို မပြင်ဆင်ထားပါ။ လမ်းညွှန်သရုပ်ပြရန် တောင်းဆိုနိုင်သလို GitHub မှ ကိုယ်တိုင် စမ်းသပ်တပ်ဆင်နိုင်သည်။"}
-            </p>
-            <Button href={site.demo || "/my/contact?intent=demo"}>
-              {site.demo ? "Live demo ဖွင့်ရန်" : "သရုပ်ပြရန် တောင်းဆိုခြင်း"}
-            </Button>
-          </div>
+          <CloudDemo locale="my" />
         </section>
       )}
       <section className="section">
