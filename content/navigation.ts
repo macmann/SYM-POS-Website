@@ -22,6 +22,7 @@ export const navigation = [
   },
   { label: "Offline-First", href: "/offline-first" },
   { label: "Hardware", href: "/hardware" },
+  { label: "Download", href: "/download" },
 
   {
     label: "Resources",

@@ -30,6 +30,7 @@ export const labels: Record<string, string> = {
   "Offline-First": "ဒေသတွင်းကွန်ရက်ဖြင့် အသုံးပြုမှု",
   Hardware: "စက်ပစ္စည်းများ",
   Resources: "လေ့လာရန်",
+  Download: "ဒေါင်းလုဒ်",
   Documentation: "အသုံးပြုလမ်းညွှန်",
   Architecture: "စနစ်ဖွဲ့စည်းပုံ",
   Company: "ဆက်သွယ်ရန်",
