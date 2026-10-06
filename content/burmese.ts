@@ -13,6 +13,40 @@ export type BurmesePage = {
   sections: BurmeseSection[];
 };
 export const burmesePages: Record<string, BurmesePage> = {
+  "/download": {
+    eyebrow: "ဒေါင်းလုဒ်နှင့် တပ်ဆင်မှု",
+    title: "သင့် POS တပ်ဆင်ရန် ဖိုင်များကို ရယူပါ။",
+    description: "Windows အတွက် .bat script များနှင့် README ကို Google Drive ဖိုင်တွဲမှ ဒေါင်းလုဒ်ရယူပြီး ပါဝင်သောလမ်းညွှန်အတိုင်း တပ်ဆင်ပါ။",
+    sections: [
+      {
+        title: "တပ်ဆင်ရန် ဖိုင်များကို ဒေါင်းလုဒ်ရယူပါ",
+        paragraphs: ["အောက်ပါလင့်ခ်မှ Google Drive ဖိုင်တွဲကို ဖွင့်ပါ။ .bat script များ၊ README နှင့် တွဲဖက်ဖိုင်များကို ဒေါင်းလုဒ်ရယူပါ။ ZIP ဖိုင်ရရှိပါက script မဖွင့်မီ ဖြည်ထုတ်ပါ။"],
+        href: "https://drive.google.com/drive/folders/1j1qoG8mFsEq4eKxQAwf2uld9cxBufn_t?usp=sharing",
+      },
+      {
+        title: "README ကို အရင်ဖတ်ပါ",
+        paragraphs: ["Git၊ Node.js 20+ နှင့် PostgreSQL လိုအပ်သည်။ install_sym_pos.bat၊ start_sym_pos_hidden.bat၊ update_sym_pos.bat၊ restart_sym_pos.bat နှင့် uninstall_sym_pos.bat ကို အတူတကွထားပါ။ Script အမည်များနှင့် အသုံးပြုရမည့် အစီအစဉ်အတွက် README ကို လိုက်နာပါ။ တွဲဖက်ဖိုင်များကို အတူတကွထားပါ။"],
+      },
+      {
+        title: "လမ်းညွှန်ထားသော script ကို ဖွင့်ပါ",
+        paragraphs: ["Windows POS စက်တွင် install_sym_pos.bat ကို right-click နှိပ်ပြီး Run as administrator ကို ရွေးပါ။ Installer သည် restaurant_pos database ကို ဖန်တီး သို့မဟုတ် ထိန်းသိမ်းပြီး pos_user ကို ဖန်တီး သို့မဟုတ် ပြင်ဆင်သည်။ ပထမဆုံးတပ်ဆင်မှုတွင် .env ဖန်တီးပြီး ပြန်တပ်ဆင်ပါက ရှိပြီးသား .env ကို ထိန်းသိမ်းသည်။ Dependencies၊ Prisma၊ migrations၊ typecheck နှင့် build ကို ဆောင်ရွက်ပြီး POS စတင်ကာ /healthz ကို စစ်ဆေးသည်။ ပြီးဆုံးမှု သို့မဟုတ် error စာသားများကို ဖတ်နိုင်ရန် command window ကို ဖွင့်ထားပါ။", "Batch script များကို ဖုန်း၊ macOS နှင့် Linux တွင် တိုက်ရိုက်ဖွင့်၍ မရပါ။"],
+      },
+      {
+        title: "စတင်အသုံးမပြုမီ စမ်းသပ်ပါ",
+        paragraphs: ["README တွင် ဖော်ပြထားသော စတင်မှုနှင့် browser လိပ်စာကို အသုံးပြုပါ။ POS ကို ဖွင့်၍ login ဝင်နိုင်ကြောင်း စစ်ဆေးပြီး မီနူး၊ အော်ဒါနှင့် ပရင်တာတို့ကို စမ်းသပ်ပါ။", "Error ဖြစ်ပါက script အမည်နှင့် error စာသားကို မှတ်သားပြီး အကူအညီတောင်းပါ။ လုံခြုံရေးသတိပေးချက် ပေါ်လာပါက ဖိုင်၏ မူရင်းကို စစ်ဆေးပါ။ လုံခြုံရေး software ကို မပိတ်ပါနှင့်။"],
+        href: "/contact?intent=support",
+      },
+      {
+        title: "တပ်ဆင်ပြီးနောက် ထိန်းသိမ်းမှု",
+        paragraphs: [
+          "Installer က canonical maintenance script များကို app ဖိုင်တွဲထဲသို့ ကူးပြီး Start၊ Update၊ Restart နှင့် Uninstall Desktop shortcut များ ဖန်တီးသည်။ Hidden launcher ကို Windows Startup တွင် ထည့်ပြီး POS port အတွက် Private-network firewall rule ထည့်သည်။",
+          "start_sym_pos_hidden.bat သည် POS ကို နောက်ကွယ်တွင် စတင်ပေးသည်။ update_sym_pos.bat သည် POS ကို ရပ်ပြီး origin/main သို့ reset လုပ်သည်။ Local source ပြင်ဆင်မှုများ အစားထိုးခံရမည်။ pg_dump backup ကို ကြိုးစားလုပ်ဆောင်သော်လည်း backup အောင်မြင်ကြောင်း စစ်ဆေးထားပါ။ Dependencies၊ Prisma၊ migrations၊ typecheck နှင့် build ပြီးနောက် ပြန်စတင်၍ /healthz စစ်ဆေးသည်။",
+          "restart_sym_pos.bat သည် .env မှ PORT ကို ဖတ်၍ listener ကို ရပ်ပြီး hidden launcher ဖြင့် ပြန်စတင်ကာ /healthz စစ်ဆေးသည်။",
+          "uninstall_sym_pos.bat သည် app၊ Startup launcher၊ shortcut နှင့် firewall rule ကို ဖယ်ရှားသည်။ PostgreSQL data ကို မူလအတိုင်း ထိန်းသိမ်းသည်။ Database နှင့် role ဖျက်ခြင်းကို administrator အတည်ပြုချက်ဖြင့်သာ ရွေးချယ်လုပ်ဆောင်နိုင်သည်။ PostgreSQL၊ Git နှင့် Node.js ကို မဖယ်ရှားပါ။",
+        ],
+      },
+    ],
+  },
   "/": {
     eyebrow: "အများပြည်သူ လေ့လာပြင်ဆင်နိုင်သော စားသောက်ဆိုင်စနစ်",
     title:

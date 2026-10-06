@@ -18,6 +18,7 @@ const groups = {
     ["Offline-First", "/offline-first"],
   ],
   Resources: [
+    ["Download", "/download"],
     ["Documentation", "/docs"],
     ["Architecture", "/offline-first"],
     ["GitHub", site.github],
